@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\front\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,5 @@ Route::get('/test1/{id}', function () {
 Route::get('/test1/{id?}', function () {
   return 'Welcome user without id';
 });
+
+Route::get('front/', [FrontController::class, 'index']);
