@@ -7,9 +7,14 @@
   <title>Front Section</title>
 </head>
 <body>
+  @extends('layouts.master')
+  @section('content')
   <h1>Front {{$id}}</h1>
   <h1>Front {{$name}}</h1>
   <h1>Front {{$age}}</h1>
   <h1>Front {{$email}}</h1>
+
+  @endsection
+
 </body>
 </html>
