@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\front\FrontController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,7 @@ Route::get('/test1/{id?}', function () {
 Route::get('front/', [FrontController::class, 'index']);
 
 Route::get('front/landing', [FrontController::class, 'landing']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
