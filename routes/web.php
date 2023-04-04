@@ -26,3 +26,5 @@ Route::get('/test1/{id?}', function () {
 });
 
 Route::get('front/', [FrontController::class, 'index']);
+
+Route::get('front/landing', [FrontController::class, 'landing']);

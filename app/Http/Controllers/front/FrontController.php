@@ -16,4 +16,9 @@ class FrontController extends Controller
     $data['email'] = 'hamza@gmail.com';
     return view('front.index', $data);
   }
+
+  public function landing()
+  {
+    return view('front.landing');
+  }
 }
