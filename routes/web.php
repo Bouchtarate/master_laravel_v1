@@ -30,6 +30,6 @@ Route::get('front/', [FrontController::class, 'index']);
 
 Route::get('front/landing', [FrontController::class, 'landing']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
