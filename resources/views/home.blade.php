@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    @foreach ($users as $user)
+                      {{$user->name}}
+                    @endforeach
                 </div>
             </div>
         </div>
