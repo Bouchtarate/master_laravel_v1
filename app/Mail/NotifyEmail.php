@@ -16,9 +16,10 @@ class NotifyEmail extends Mailable
   /**
    * Create a new message instance.
    */
+
   public function __construct()
   {
-    //
+
   }
 
   /**
@@ -37,7 +38,7 @@ class NotifyEmail extends Mailable
   public function content(): Content
   {
     return new Content(
-      view: 'view.name',
+      view: 'mails.emailUser'
     );
   }
 

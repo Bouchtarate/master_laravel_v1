@@ -26,7 +26,7 @@ class HomeController extends Controller
   public function index()
   {
     return view('home', [
-      'users' => User::where('expire', 0)->get(),
+      'users' => User::where('expire', 1)->get(),
     ]);
   }
 }

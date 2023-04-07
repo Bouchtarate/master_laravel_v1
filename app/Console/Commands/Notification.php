@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\NotifyEmail;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class Notification extends Command
 {
@@ -26,11 +28,11 @@ class Notification extends Command
    */
   public function handle(): void
   {
+    // $data = ['title' => 'send email', 'type' => 'hadra 9as7a'];
     // $user = User::select('email')->get();
     $emails = User::pluck('email')->toArray();
-
     foreach ($emails as $email) {
-      // how to send emails in laravel
+      Mail::to($email)->send(new NotifyEmail());
     }
   }
 }
