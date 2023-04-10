@@ -36,3 +36,5 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [CrudController::class, 'index']);
+Route::get('/create', [CrudController::class, 'create']);
+Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
