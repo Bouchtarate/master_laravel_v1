@@ -4,6 +4,8 @@ use App\Http\Controllers\CrudController;
 use App\Http\Controllers\front\FrontController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\LaravelLocalization;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
   return view('welcome');
 });
 Route::get('/test1/{id}', function () {
@@ -36,5 +38,6 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [CrudController::class, 'index']);
-Route::get('/create', [CrudController::class, 'create']);
 Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
+
+Route::get('/create', [CrudController::class, 'create']);

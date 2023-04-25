@@ -11,6 +11,7 @@ class Client extends Model
 
   protected $fillable = [
     '_token',
+    'images',
     'name',
     'email',
     'phone',

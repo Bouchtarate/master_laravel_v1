@@ -25,10 +25,11 @@ class ClientRequest extends FormRequest
   public function rules(): array
   {
     return [
+      'images' => "required|",
       'name' => 'required|string|max:15',
-      'email' => 'required|unique:users,email',
-      'phone' => 'required|numeric|max:15',
-      'budget' => 'required|numeric|max:15',
+      'email' => 'required|unique:clients,email',
+      'phone' => 'required|max:15',
+      'budget' => 'required|numeric',
     ];
   }
 }

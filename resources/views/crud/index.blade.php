@@ -8,20 +8,42 @@
   <title>CRUD</title>
 </head>
 <body>
-  <table>
+  <div class="container">
+  <table class="table my-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">email</th>
+        <th scope="col">phone</th>
+        <th scope="col">budget</th>
+        <th scope="col">Avatar</th>
+
+      </tr>
+    </thead>
     <tbody>
-      @foreach ($users as $user)
-        <tr>
-          <td>
-            {{$user->name}}
-          </td>
-          <td>
-            {{$user->email}}
-          </td>
-        </tr>
+      @foreach ($clients as $client)
+      <tr>
+        <th>{{$client->id}}</th>
+        <th>{{$client->name}}</th>
+        <th>{{$client->email}}</th>
+        <th>{{$client->phone}}</th>
+        <th>{{$client->budget}}</th>
+        <th class="w-25"> <img src="{{asset('images/clients/'.$client->images)}}" alt="{{$client->name}}" class="w-25"></th>
+      </tr>
       @endforeach
+      @if (Session::has('success'))
+      <div class="alert alert-primary" role="alert">
+        {{ Session::get('success')}}
+      </div>
+      @endif
     </tbody>
   </table>
-  <a href="/create">create user</a>
+  <div class="d-grid col-4 mx-auto">
+    <a href="/create" class="nav-link text-center text-success btn btn-outline-warning p-3 mt-3">create user</a>
+    {{-- THE LANGUE USED --}}
+    <p>{{$lang}}</p>
+  </div>
+</div>
 </body>
 </html>
