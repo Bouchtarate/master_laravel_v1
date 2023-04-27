@@ -24,7 +24,11 @@
     <tbody>
       @foreach ($clients as $client)
       <tr>
-        <th style="width: 100px"> <img src="{{asset('images/clients/'.$client->images)}}" alt="{{$client->name}}" class="w-25"></th>
+        <th style="width: 100px">
+          @if ($client->images)
+          <img src="{{asset('images/clients/'.$client->images)}}" alt="{{$client->name}}" class="w-25">
+          @endif
+        </th>
         <th>{{$client->name}}</th>
         <th>{{$client->email}}</th>
         <th>{{$client->phone}}</th>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViewer;
 use App\Http\Requests\ClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
@@ -17,6 +18,7 @@ class CrudController extends Controller
   public function youtube()
   {
     $videos = Video::first();
+    event(new VideoViewer($videos));
     return view('crud.youtube', [
       'videos' => $videos
     ]);
