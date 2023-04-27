@@ -38,6 +38,11 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [CrudController::class, 'index']);
-Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
-
 Route::get('/create', [CrudController::class, 'create']);
+Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
+Route::get('/edit/{id}', [CrudController::class, 'edit']);
+Route::put('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
+Route::get('/delete/{id}', [CrudController::class, 'delete'])->name('crud.delete');
+
+
+Route::get('/youtube', [CrudController::class, 'youtube']);

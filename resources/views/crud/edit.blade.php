@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-  <form action="{{route('/update',$client->id)}}" method="POST" enctype="multipart/form-data">
+  <form action="{{route('crud.update',$client->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="my-3">

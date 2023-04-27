@@ -12,28 +12,29 @@
   <table class="table my-3">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Avatar</th>
         <th scope="col">name</th>
         <th scope="col">email</th>
         <th scope="col">phone</th>
         <th scope="col">budget</th>
-        <th scope="col">Avatar</th>
-
+        <th scope="col">Modify</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($clients as $client)
       <tr>
-        <th>{{$client->id}}</th>
+        <th style="width: 100px"> <img src="{{asset('images/clients/'.$client->images)}}" alt="{{$client->name}}" class="w-25"></th>
         <th>{{$client->name}}</th>
         <th>{{$client->email}}</th>
         <th>{{$client->phone}}</th>
         <th>{{$client->budget}}</th>
-        <th class="w-25"> <img src="{{asset('images/clients/'.$client->images)}}" alt="{{$client->name}}" class="w-25"></th>
+        <th><a href="{{url('edit/'.$client->id)}}"class="btn btn-outline-success">Edit {{$client->id}}</a></th>
+        <th><a href="{{route('crud.delete',$client->id)}}"class="btn btn-outline-danger">Delete {{$client->id}}</a></th>
       </tr>
       @endforeach
       @if (Session::has('success'))
-      <div class="alert alert-primary" role="alert">
+      <div class="alert alert-primary text-center" role="alert">
         {{ Session::get('success')}}
       </div>
       @endif
