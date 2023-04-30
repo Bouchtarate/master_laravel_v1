@@ -32,7 +32,7 @@
     <div class="text-danger mt-3 text-center">{{$message}}</div>
   @enderror
   <div class="d-grid col-4 mx-auto">
-    <button type="submit" class="btn btn-outline-success">Edit Client</button>
+    <button id="editClient" class="btn btn-outline-info">Edit Client</button>
   </div>
 </form>
 

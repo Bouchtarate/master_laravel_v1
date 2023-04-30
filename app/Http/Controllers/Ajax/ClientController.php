@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use App\Traits\StoreImage;
 use Illuminate\Http\Request;
@@ -26,14 +27,35 @@ class ClientController extends Controller
   // Store client into db using AJAX
   public function Store(Request $request)
   {
-    // $image_name = $this->saveImage($request->images, "images/clients");
+    $image_name = $this->saveImage($request->images, "images/clients");
 
-    Client::create([
+    $client = Client::create([
       'name' => $request->name,
       'email' => $request->email,
       'phone' => $request->phone,
       'budget' => $request->budget,
-      // 'images' => $image_name,
+      'images' => $image_name,
     ]);
+
+    if ($client) {
+      return response()->json([
+        'status' => true,
+        'msg' => "تم الحفظ بنجاح",
+      ]);
+    } else {
+      return response()->json([
+        'status' => false,
+        'msg' => "فشل في الحفظ رجاء المحاولة مجددا",
+      ]);
+    }
+  }
+
+  public function edit(string $id)
+  {
+    $client = Client::where('id', $id)->first();
+    return view(
+      'ajaxCRUD.edit',
+      ['client' => $client]
+    );
   }
 }
