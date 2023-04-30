@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title',"Add Client")
 @section('content')
 <form method="POST" id="storeClient">
   @csrf

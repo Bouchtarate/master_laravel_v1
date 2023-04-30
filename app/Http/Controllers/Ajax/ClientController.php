@@ -58,4 +58,14 @@ class ClientController extends Controller
       ['client' => $client]
     );
   }
+  public function delete(Request $request)
+  {
+    $client = Client::where('id', $request->id)->first();
+    $client->delete();
+    return response()->json([
+      'status' => true,
+      'msg' => 'تم الحدف بنجاح ',
+      'id' => $request->id,
+    ]);
+  }
 }

@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title','Modify Client')
 @section('content')
 <form action="{{route('ajaxCRUD.update',$client->id)}}" method="POST" enctype="multipart/form-data">
   @csrf

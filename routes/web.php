@@ -55,8 +55,8 @@ Route::get('/youtube', [CrudController::class, 'youtube']);
 Route::get('/ajax', [ClientController::class, 'index']);
 Route::get('/ajax/create', [ClientController::class, 'create']);
 Route::post('/ajax/store', [ClientController::class, 'store'])->name('ajaxCRUD.store');
-Route::get('/ajax/edit/{id}', [ClientController::class, 'edit']);
-Route::put('/ajax/update/{id}', [ClientController::class, 'update'])->name('ajaxCRUD.update');
-Route::get('ajax/delete/{id}', [ClientController::class, 'delete'])->name('ajaxCRUD.delete');
+Route::get('/ajax/edit', [ClientController::class, 'edit']);
+Route::put('/ajax/update', [ClientController::class, 'update'])->name('ajaxCRUD.update');
+Route::post('ajax/delete', [ClientController::class, 'delete'])->name('ajaxCRUD.delete');
 
 // CRUD OPERATION WITH AJAX
