@@ -33,8 +33,8 @@
         <th>{{$client->email}}</th>
         <th>{{$client->phone}}</th>
         <th>{{$client->budget}}</th>
-        <th><a href="{{url('edit/'.$client->id)}}"class="btn btn-outline-success">Edit {{$client->id}}</a></th>
-        <th><a href="{{route('crud.delete',$client->id)}}"class="btn btn-outline-danger">Delete {{$client->id}}</a></th>
+        <th><a href="{{url('ajax/edit/'.$client->id)}}"class="btn btn-outline-success">Edit {{$client->id}}</a></th>
+        <th><a href="{{route('ajaxCRUD.delete',$client->id)}}"class="btn btn-outline-danger">Delete {{$client->id}}</a></th>
       </tr>
       @endforeach
       @if (Session::has('success'))
@@ -47,7 +47,7 @@
   <div class="d-grid col-4 mx-auto">
     <a href="/ajax/create" class="nav-link btn btn-outline-warning p-3 mt-3">create user</a>
     {{-- THE LANGUE USED --}}
-    <p>{{$lang}}</p>
+    {{-- <p>{{$lang}}</p> --}}
   </div>
 </div>
 </body>

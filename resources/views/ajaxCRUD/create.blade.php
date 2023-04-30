@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<form action="" method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
   @csrf
   <div class="my-3">
     <label for="exampleInputEmail1" class="form-label">Name</label>
@@ -35,7 +35,33 @@
     <div class="text-danger mt-3 text-center">{{$message}}</div>
     @enderror
     <div class="d-grid col-4 mx-auto">
-      <button type="submit" class="btn btn-outline-dark">Add Client</button>
+      <button id="addClient" class="btn btn-outline-dark">Add Client</button>
     </div>
 </form>
+@endsection
+@section('scripts')
+  <script>
+    $(document).ready(function(){
+      $(document).on('click','#addClient',function(e){
+        e.preventDefault();
+        $.ajax({
+          type:"POST",
+          url: "{{route('ajaxCRUD.store')}}",
+          data:{
+            '_token':"{{csrf_token()}}",
+            'name':$("input[name='name']").val(),
+            'email':$("input[name='email']").val(),
+            'phone':$("input[name='phone']").val(),
+            'budget':$("input[name='budget']").val(),
+            // 'images':$("input[name='images']").val(),
+          },
+          success:function(data){
+
+          },error:function(data){
+
+          }
+        });
+      });
+    });
+  </script>
 @endsection

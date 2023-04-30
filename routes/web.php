@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Ajax\ClientController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\front\FrontController;
 use Illuminate\Support\Facades\Auth;
@@ -37,12 +38,25 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//CRUD OPERATION
 Route::get('/', [CrudController::class, 'index']);
 Route::get('/create', [CrudController::class, 'create']);
 Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
 Route::get('/edit/{id}', [CrudController::class, 'edit']);
 Route::put('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
 Route::get('/delete/{id}', [CrudController::class, 'delete'])->name('crud.delete');
-
-
+//CRUD OPERATION
+//EVENT LISTENER
 Route::get('/youtube', [CrudController::class, 'youtube']);
+//EVENT LISTENER
+
+
+// CRUD OPERATION WITH AJAX
+Route::get('/ajax', [ClientController::class, 'index']);
+Route::get('/ajax/create', [ClientController::class, 'create']);
+Route::post('/ajax/store', [ClientController::class, 'store'])->name('ajaxCRUD.store');
+Route::get('/ajax/edit/{id}', [ClientController::class, 'edit']);
+Route::put('/ajax/update/{id}', [ClientController::class, 'update'])->name('ajaxCRUD.update');
+Route::get('ajax/delete/{id}', [ClientController::class, 'delete'])->name('ajaxCRUD.delete');
+
+// CRUD OPERATION WITH AJAX
