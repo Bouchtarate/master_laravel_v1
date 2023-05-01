@@ -58,6 +58,22 @@ class ClientController extends Controller
       ['client' => $client]
     );
   }
+
+  public function update(Request $request)
+  {
+    $client = Client::where('id', $request->id)->first();
+    $client->update([
+      'name' => $request->name,
+      'email' => $request->email,
+      'phone' => $request->phone,
+      'budget' => $request->budget
+    ]);
+    return response()->json([
+      'status' => true,
+      'msg' => 'your update was applied successfully',
+    ]);
+    // return $request;
+  }
   public function delete(Request $request)
   {
     $client = Client::where('id', $request->id)->first();
