@@ -5,7 +5,7 @@ use App\Http\Controllers\CrudController;
 use App\Http\Controllers\front\FrontController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\LaravelLocalization;
+
 
 
 /*
@@ -32,7 +32,7 @@ Route::get('/test1/{id?}', function () {
 
 Route::get('front/', [FrontController::class, 'index']);
 
-Route::get('front/landing', [FrontController::class, 'landing']);
+Route::get('front/landing', [FrontController::class, 'landing'])->name('landing')->middleware('check.age');
 
 Auth::routes(['verify' => true]);
 
