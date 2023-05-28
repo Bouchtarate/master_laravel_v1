@@ -29,6 +29,9 @@
   <div class="d-grid col-4 mx-auto">
     <button id="addClient" class="btn btn-outline-dark">Add Client</button>
   </div>
+  <div class="d-grid col-4 mx-auto my-3">
+    <a href="/ajax" class="btn btn-outline-info">Cancel</a>
+  </div>
     <div class="alert alert-info text-center m-3" id ="success_msg" style="display: none">
       تم الحفظ بنجاح
     </div>

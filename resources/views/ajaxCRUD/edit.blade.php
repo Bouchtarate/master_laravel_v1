@@ -42,13 +42,13 @@
         contentType:false,
         cache:false,
         success:function(data){
-            if(data.status ===true){
-              console.log(data.msg);
-              $('#success_msg').show();
-            }
-          },error:function(data){
-
+          if(data.status ===true){
+            console.log(data.msg);
+            $('#success_msg').show();
           }
+        },error:function(data){
+
+        }
       });
     });
   });
