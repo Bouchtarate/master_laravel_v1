@@ -39,12 +39,14 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //CRUD OPERATION
-Route::get('/', [CrudController::class, 'index']);
-Route::get('/create', [CrudController::class, 'create']);
-Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
-Route::get('/edit/{id}', [CrudController::class, 'edit']);
-Route::put('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
-Route::get('/delete/{id}', [CrudController::class, 'delete'])->name('crud.delete');
+Route::group(['middleware' => 'auth:admin'], function () {
+  Route::get('/', [CrudController::class, 'index'])->name('crud');
+  Route::get('/create', [CrudController::class, 'create'])->name('crud.create');
+  Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
+  Route::get('/edit/{id}', [CrudController::class, 'edit'])->name('crud.edit');
+  Route::put('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
+  Route::get('/delete/{id}', [CrudController::class, 'delete'])->name('crud.delete');
+});
 //CRUD OPERATION
 //EVENT LISTENER
 Route::get('/youtube', [CrudController::class, 'youtube']);

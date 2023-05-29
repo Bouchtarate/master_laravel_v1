@@ -61,7 +61,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <li class="nav-item">
-                                      <a class="nav-link" href="front/landing">{{ __('Admin') }}</a>
+                                      <a class="nav-link" href="front/landing">{{ __('User') }}</a>
                                   </li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
