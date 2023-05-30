@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
   Route::put('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
   Route::get('/delete/{id}', [CrudController::class, 'delete'])->name('crud.delete');
 });
+Route::get('/admin/login', [CrudController::class, 'adminLogin'])->name('admin.login');
+Route::post('/admin/login', [CrudController::class, 'checkAdminLogin'])->name('save.admin.login');
+
 //CRUD OPERATION
 //EVENT LISTENER
 Route::get('/youtube', [CrudController::class, 'youtube']);
@@ -59,5 +62,8 @@ Route::get('/ajax/create', [ClientController::class, 'create']);
 Route::post('/ajax/store', [ClientController::class, 'store'])->name('ajaxCRUD.store');
 Route::get('/ajax/edit/{id}', [ClientController::class, 'edit']);
 Route::post('/ajax/update', [ClientController::class, 'update'])->name('ajaxCRUD.update');
-Route::post('ajax/delete', [ClientController::class, 'delete'])->name('ajaxCRUD.delete');
+Route::post(
+  'ajax/delete',
+  [ClientController::class, 'delete']
+)->name('ajaxCRUD.delete');
 // CRUD OPERATION WITH AJAX

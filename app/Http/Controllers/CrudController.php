@@ -9,12 +9,15 @@ use App\Models\Client;
 use App\Models\User;
 use App\Models\Video;
 use App\Traits\StoreImage;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller
 {
   use StoreImage;
+  use AuthenticatesUsers;
   public function youtube()
   {
     $videos = Video::first();
@@ -84,5 +87,21 @@ class CrudController extends Controller
     }
     $client->delete();
     return redirect('/')->with('success', 'Your delete was applied successfully');
+  }
+
+  public function adminLogin()
+  {
+    return view('admin.login');
+  }
+  public function checkAdminLogin(Request $request)
+  {
+    $this->validate($request, [
+      'email' => 'required|email',
+      'password' => 'required|min:6'
+    ]);
+    if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+      return redirect()->intended('/');
+    }
+    return back()->withInput($request->only('email'));
   }
 }
